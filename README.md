@@ -1,4 +1,4 @@
-# Ontology Name Service
+![Ontology Name Service](./assets/title.jpg)
 
 > 📖🔍 Documents of the Ontology Name Service.
 

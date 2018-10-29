@@ -1,6 +1,6 @@
 # Tutorial
 
-## Install
+## Install Ontology
 
 Clone the source code and install dependency
 ```

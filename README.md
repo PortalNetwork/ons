@@ -14,7 +14,10 @@ ONS is the Ontology Name Service, a distributed, open, and extensible naming sys
 ## 📚 Documents
 
 #### Table of Contents
--  [Introduction](./docs/INTRODUCTION.md)
+- [Introduction](./docs/INTRODUCTION.md)
+- [Tutorial](./docs/TUTORIAL.md)
+
+## 🗂️ Ontology Technical Stack
 
 # Introduction
 

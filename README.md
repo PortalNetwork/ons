@@ -17,6 +17,11 @@ ONS is the Ontology Name Service, a distributed, open, and extensible naming sys
 - [Introduction](./docs/INTRODUCTION.md)
 - [Tutorial](./docs/TUTORIAL.md)
 
+## 📝 Ontology in Web3.0
+Ontology plays an connecting and entry layer in Web3.0 services. It connects with Ontology wallet, ONT ID, blockchain server and decentralized resources.
+
+![web3](./assets/web3.png)
+
 ## 🗂️ Ontology Technical Stack
 
 # Introduction

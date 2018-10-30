@@ -26,7 +26,7 @@ Ontology plays an connecting and entry layer in Web3.0 services. It connects wit
 ![web3](./assets/web3.png)
 
 ## 🗂️ Ontology Technical Stack
-Along down with the y-axis, the following picture shows the Web3 technical stacks of Ontology ecosystem. Each of the layers is based on the modules of the last one and the fundamental base of all layers is the state layer which is Ontology protocol. The rapidly evolving development on each layer brings the infrastructure more mature, and that is crucial to give the robustness of Web3.
+Along down with the y-axis, the following picture shows the Web3 technical stacks of Ontology ecosystem. Each of the layers is based on the modules of the previous one and the fundamental base of all layers is the state layer which is Ontology protocol. The rapidly evolving development on each layer brings the infrastructure more mature, and that is crucial to give the robustness of Web3.
 ![Technical Stack](./assets/stacks/main.jpg)
 
 ### State Layer

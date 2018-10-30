@@ -56,7 +56,7 @@ The main part of the user control layer is how users manage their accounts. If t
 
 ### Application Layer
 By utilizing the technologies provided by different layers above, there comes out various real use cases and opportunities. If a blogger or any content creator wants to accept crypto assets as the payment, they can utilize the Ontology domain names governs by the smart contract for their receiving wallet address. For example, send any tokens on Ontology via simply typing 'yourfriend.ont' and that's it.
-![Application Layer](./assets/stacks/application.jpg)
+![Application Layer](./assets/stacks/appplication.jpg)
 
 # Introduction
 

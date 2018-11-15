@@ -21,10 +21,17 @@ def Main(operation, args):
         return 0
 
     if operation == 'owner':
+        if nargs == 0:
+            print("No domain name supplied")
+            return 0
         domain_name = args[0]
         return QueryDomain(domain_name)
 
     elif operation == 'release':
+        if nargs == 0:
+            print("No domain name supplied")
+            return 0
+    
         domain_name = args[0]
         return DeleteDomain(domain_name)
 
@@ -32,8 +39,11 @@ def Main(operation, args):
         if nargs < 2:
             print("required arguments: [domain_name] [owner]")
             return 0
+        
         domain_name = args[0]
         owner = args[1]
+        
+        
         return RegisterDomain(domain_name, owner)
 
     elif operation == 'transfer':
@@ -67,8 +77,23 @@ def Main(operation, args):
         domain_name = args[0]
         subdomain = args[1]
         return SetSubdomain(domain_name,subdomain)
+    
+    elif operation == 'getAddress':
+        if nargs == 0:
+            print("no address supply")
+            return 0
         
-
+        domain_name = args[0]
+        return GetAddress(domain_name)
+        
+    elif operation == 'getIPFS':
+        if nargs == 0:
+            print("no domain supply")
+            return 0
+        
+        domain_name = args[0]
+        return GetIPFSHash(domain_name)
+    
 
 
 
@@ -89,6 +114,15 @@ def QueryDomain(domain_name):
 def RegisterDomain(domain_name, owner):
     msg = concat("RegisterDomain: ", domain_name)
     Notify(msg)
+    
+    '''
+    Check if the domain contain .
+    if ture then return false
+    '''
+    if detectStr(domain_name) == 1:
+        Notify("Domain has incorrect char inside")
+        return False
+        
 
     if not CheckWitness(owner):
         Notify("Owner argument is not the same as the sender")
@@ -101,6 +135,8 @@ def RegisterDomain(domain_name, owner):
         return False
 
     Put(context, domain_name, owner)
+    msg2 = [domain_name,"is owned by ",owner]
+    Notify(msg2)
     return True
 
 
@@ -123,6 +159,8 @@ def TransferDomain(domain_name, to_address):
         return False
 
     Put(context, domain_name, to_address)
+    msg2 = [domain_name,"is owned by " ,to_address]
+    Notify(msg2)
     return True
 
 
@@ -141,6 +179,8 @@ def DeleteDomain(domain_name):
         return False
 
     Delete(context, domain_name)
+    msg2 = [domain_name,"is release "]
+    Notify(msg2)
     return True
 
 def SetAddress(domain_name,to_address):
@@ -155,7 +195,7 @@ def SetAddress(domain_name,to_address):
         Notify("Invalid new owner address. Must be exactly 34 characters")
         return False
     
-    Put(context,"{domain_name}.ons", to_address)
+    Put(context,"{domain_name}.neo", to_address)
     return True
     
 
@@ -187,7 +227,7 @@ def AddIPFSHash(domain_name,IPFS):
 
     
 def SetSubdomain(domain_name,subdomain):
-    msg = concat("SetSubdomain: ",domain_name)
+    msg = concat("SetSubdomain: ",domain_name,subdomain)
     Notify(msg)
     context = GetContext()
     owner = Get(context, domain_name)
@@ -196,10 +236,33 @@ def SetSubdomain(domain_name,subdomain):
         return False
     
     if not CheckWitness(owner):
-        Notify("Sender is not the owner, cannot transfer")
+        Notify("Sender is not the owner, cannot set subdomain")
         return False
-
-    Put(context, "{subdomain}.{domain_name}", owner)
+    
+    domain = concat(subdomain,".")
+    domain = concat(domain,domain_name)
+    
+    Put(context,domain, owner)
+    
+    msg2 = [domain,"is owned by ",owner]
+    Notify(msg2)
     return True
+    
+def GetIPFSHash(domain_name):
+    msg = concat("GetIPFSHash: ", domain_name)
+    Notify(msg)
+    if QueryDomain(domain_name) == False:
+       return False
+    context = GetContext()
+    address = Get(context, "{domain_name}.ipfs")
+    return address
+
+
+def detectStr(detect):
+    for i in range(0, len(detect)):
+        if substr(detect, i, 1) == ".":
+            return True
+        
+    return False
 
 

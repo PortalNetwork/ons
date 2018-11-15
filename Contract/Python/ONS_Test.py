@@ -206,7 +206,7 @@ def GetAddress(domain_name):
     if QueryDomain(domain_name) == False:
        return False
     context = GetContext()
-    address = Get(context, "{domain_name}.neo")
+    address = Get(context, "{domain_name}.ons")
     return address
 
 def AddIPFSHash(domain_name,IPFS):
